@@ -31,7 +31,7 @@
 # ARIETTA=1
 # LPC1768=1 # beta
 # LCTECH_STM32F103RBT6=1 # LC Technology STM32F103RBT6 Ebay boards
-# ARDUINOMEGA2560=1
+ ARDUINOMEGA2560=1
 # Or nothing for standard linux compile
 #
 # Also:
@@ -181,7 +181,7 @@ else ifdef STM32F4DISCOVERY
 EMBEDDED=1
 USE_NET=1
 USE_GRAPHICS=1
-DEFINES += -DUSE_USB_OTG_FS=1 
+DEFINES += -DUSE_USB_OTG_FS=1
 BOARD=STM32F4DISCOVERY
 STLIB=STM32F40_41xxx
 PRECOMPILED_OBJS+=$(ROOT)/targetlibs/stm32f4/lib/startup_stm32f40_41xxx.o
@@ -190,7 +190,7 @@ else ifdef STM32F401CDISCOVERY
 USB=1
 USE_NET=1
 USE_GRAPHICS=1
-DEFINES += -DUSE_USB_OTG_FS=1 
+DEFINES += -DUSE_USB_OTG_FS=1
 FAMILY=STM32F4
 BOARD=STM32F401CDISCOVERY
 STLIB=STM32F401xx
@@ -199,7 +199,7 @@ OPTIMIZEFLAGS+=-O3
 else ifdef STM32F429IDISCOVERY
 EMBEDDED=1
 USE_GRAPHICS=1
-DEFINES += -DUSE_USB_OTG_FS=1 
+DEFINES += -DUSE_USB_OTG_FS=1
 FAMILY=STM32F4
 BOARD=STM32F429IDISCOVERY
 STLIB=STM32F429_439xx
@@ -402,7 +402,7 @@ src/jswrap_serial.c \
 src/jswrap_spi_i2c.c \
 src/jswrap_stream.c \
 src/jswrap_string.c \
-src/jswrap_waveform.c 
+src/jswrap_waveform.c
 
 # it is important that _pin comes before stuff which uses
 # integers (as the check for int *includes* the chek for pin)
@@ -820,7 +820,7 @@ targetlibs/stm32f4/lib/stm32f4xx_tim.c        \
 targetlibs/stm32f4/lib/stm32f4xx_usart.c      \
 targetlibs/stm32f4/lib/stm32f4xx_wwdg.c       \
 targetlibs/stm32f4/lib/system_stm32f4xx.c
-#targetlibs/stm32f4/lib/stm324xx_fsmc.c 
+#targetlibs/stm32f4/lib/stm324xx_fsmc.c
 
 ifdef USB
 INCLUDE += -I$(ROOT)/targetlibs/stm32f4/usblib -I$(ROOT)/targetlibs/stm32f4/usb
@@ -858,9 +858,9 @@ MCU = atmega2560
 F_CPU = 16000000
 FORMAT = ihex
 
-ARDUINO_LIB=$(ROOT)/targetlibs/arduino_avr/cores/arduino
+ARDUINO_LIB=$(ROOT)/targetlibs/arduino_avr/avr/cores/arduino
 ARCHFLAGS += -DF_CPU=$(F_CPU) -mmcu=$(MCU) -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-LDFLAGS += --relax
+#LDFLAGS += --relax
 AVR=1
 INCLUDE+=-I$(ARDUINO_LIB) -I$(ARDUINO_LIB)/../../variants/mega
 DEFINES += -DARDUINO_AVR -D$(CHIP) -D$(BOARD)
@@ -875,7 +875,7 @@ $(ARDUINO_LIB)/WString.cpp \
 $(ARDUINO_LIB)/Print.cpp \
 $(ARDUINO_LIB)/HardwareSerial.cpp \
 targets/arduino/jshardware.cpp \
-targets/arduino/espruino.cpp 
+targets/arduino/espruino.cpp
 
 export CCPREFIX=avr-
 endif
